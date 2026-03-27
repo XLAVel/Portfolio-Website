@@ -638,15 +638,16 @@
               <div class="project-visual">US Household Income Analysis</div>
               <h4>Income distribution analysis</h4>
               <p style="color:var(--muted);margin:8px 0 0;">
-                A data project exploring income patterns, geographic trends, and anomalies using SQL workflows.
+                Explores the US Household Income dataset using MySQL to perform data cleaning, transformation, exploratory data analysis (EDA), and automation. 
+                The goal is to uncover meaningful insights about income distribution across the United States, including geographic trends and potential anomalies within the data.
               </p>
             </article>
 
             <article class="project-slide">
-              <div class="project-visual">CRM Contacts Analysis</div>
-              <h4>Lead and contact insights</h4>
+              <div class="project-visual">Wallmart Promotions Dashboard</div>
+              <h4>Promotion and Sales insights</h4>
               <p style="color:var(--muted);margin:8px 0 0;">
-                Segmentation, contact quality checks, and operational reporting ideas for sales and marketing datasets.
+                Dashboard concepts focused on readability, stakeholder needs, and cleaner decision support.
               </p>
             </article>
 
@@ -680,6 +681,11 @@
         </div>
       </section>
 
+<div id="imageModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center;">
+  <img id="modalImg" style="max-width:90%; max-height:90%; border-radius:12px;">
+</div>
+
+
       <section id="certificates">
         <div class="section-title">
           <h3>Certificates</h3>
@@ -690,13 +696,13 @@
             <article class="project-slide certificate-slide">
               <div class="certificate-image" style="background-image: url('https://raw.githubusercontent.com/XLAVel/Certificates/refs/heads/main/Xavier%20Lancelot%20Veloso%20-%20Advanced%20MySQL%20for%20Data%20Analysis%20Certificate.png');"></div>
               <h4>Advanced MySQL for Data Analysis</h4>
-              <p style="color:var(--muted);margin:8px 0 0;">Analyst Builder | Issued April 2024 | <a href="https://www.analystbuilder.com/achievements/verify/V1M61U3V7L?r=qP6Q6i6pcYOApMFq0aEh3AtIy">Show Credentials</p>
+              <p style="color:var(--muted);margin:8px 0 0;">Analyst Builder | Issued April 2024 | <a href="https://www.analystbuilder.com/achievements/verify/V1M61U3V7L?r=qP6Q6i6pcYOApMFq0aEh3AtIy">Show Credentials</a></p>
             </article>
 
             <article class="project-slide certificate-slide">
               <div class="certificate-image" style="background-image: url('https://raw.githubusercontent.com/XLAVel/Certificates/refs/heads/main/Xavier%20Lancelot%20Veloso%20-%20Microsoft%20Power%20BI%20Desktop%20for%20Business%20Intelligence%20Certificate.png');"></div>
               <h4>Microsoft Power BI Desktop for Business Intelligence</h4>
-              <p style="color:var(--muted);margin:8px 0 0;">Analyst Builder | Issued March 2026 | <a href="https://www.analystbuilder.com/certificates/e5e474f5-4276-4b01-a4ab-c09207886249">Show Credentials</a></p>
+              <p style="color:var(--muted);margin:8px 0 0;">Analyst Builder | Issued March 2026 | <a href="https://www.analystbuilder.com/achievements/verify/YTIHVXCLLW?r=MAaBCFAWlgzQa5MQLNKjQQELL">Show Credentials</a></p>
             </article>
 
             <article class="project-slide certificate-slide">
@@ -708,7 +714,7 @@
             <article class="project-slide certificate-slide">
               <div class="certificate-image" style="background-image: url('https://raw.githubusercontent.com/XLAVel/Certificates/refs/heads/main/Xavier%20Lancelot%20Veloso%20-%20MySQL%20for%20Data%20Analytics%20Certificate.png');"></div>
               <h4>MySQL for Data Analysis</h4>
-              <p style="color:var(--muted);margin:8px 0 0;">Analyst Builder | Issued Feb 2024 | <a href="https://www.analystbuilder.com/achievements/verify/MTODR4E43Q">Show Credentials</p>
+              <p style="color:var(--muted);margin:8px 0 0;">Analyst Builder | Issued Feb 2024 | <a href="https://www.analystbuilder.com/achievements/verify/MTODR4E43Q">Show Credentials</a></p>
             </article>
 
             <article class="project-slide certificate-slide">
@@ -751,12 +757,20 @@
 
           <div class="contact-box">
             <h4 style="margin-top:0;">Quick message form</h4>
-            <form onsubmit="event.preventDefault(); alert('Connect this form to Formspree, Netlify Forms, or EmailJS.');">
-              <div style="display:grid;gap:12px;">
-                <input type="text" placeholder="Your name" style="padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:white;">
-                <input type="email" placeholder="Your email" style="padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:white;">
-                <textarea placeholder="Your message" rows="5" style="padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:white;resize:vertical;"></textarea>
-                <button class="btn" type="submit">Send Message</button>
+            <form
+              action="https://formspree.io/f/xjgpgvgz"
+              method="POST">
+            <div style="display:grid;gap:12px;">
+              <label>
+                Your email:
+                 <input type="email" name="email" style="padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:white;">
+             </label>
+             <label>
+                 Your message:
+                 <textarea name="message" rows="5" style="padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:white;resize:vertical;"></textarea>
+             </label>
+                 <button class="btn" type="submit">Send Message</button>
+                 </div>
               </div>
             </form>
           </div>
@@ -800,6 +814,27 @@
     document.getElementById('certNextBtn').addEventListener('click', () => {
       certificateSlider.scrollBy({ left: 520, behavior: 'smooth' });
     });
+
+    const modal = document.getElementById('imageModal');
+const modalImg = document.getElementById('modalImg');
+
+// add click to all certificate images
+const certImages = document.querySelectorAll('.certificate-image');
+
+certImages.forEach(img => {
+  img.addEventListener('click', () => {
+    const bg = img.style.backgroundImage;
+    const url = bg.slice(5, -2); // extract url("...")
+    modalImg.src = url;
+    modal.style.display = 'flex';
+  });
+});
+
+// close modal on click
+modal.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
   </script>
 </body>
 </html>
