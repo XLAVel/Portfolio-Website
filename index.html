@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xavier Veloso | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #10172c;
+      --panel: rgba(255,255,255,0.06);
+      --panel-strong: rgba(255,255,255,0.1);
+      --text: #f5f7fb;
+      --muted: #9fb0d0;
+      --line: rgba(255,255,255,0.1);
+      --accent: #7c9cff;
+      --accent-2: #47d7ac;
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+      --radius: 22px;
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(124,156,255,.25), transparent 30%),
+        radial-gradient(circle at top right, rgba(71,215,172,.15), transparent 25%),
+        linear-gradient(180deg, #070b16 0%, #0b1020 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 28px 22px;
+      border-right: 1px solid var(--line);
+      background: rgba(5, 9, 18, 0.72);
+      backdrop-filter: blur(16px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .brand-badge {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .brand p {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .nav a {
+      color: var(--muted);
+      padding: 12px 14px;
+      border-radius: 14px;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--text);
+      background: var(--panel);
+      border-color: var(--line);
+    }
+
+    .sidebar-footer {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 28px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--panel);
+    }
+
+    .sidebar-footer p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), #5c7dff);
+      color: white;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: transform .25s ease, box-shadow .25s ease;
+      box-shadow: 0 12px 30px rgba(92, 125, 255, .35);
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn.ghost {
+      background: transparent;
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+
+    main {
+      width: min(100%, calc(var(--max) + 80px));
+      padding: 38px 40px 80px;
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 32px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(124,156,255,.12);
+      border: 1px solid rgba(124,156,255,.25);
+      color: #dbe4ff;
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h2 {
+      margin: 0;
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .hero .lead {
+      margin: 18px 0 28px;
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .stat,
+    .card,
+    .timeline-item,
+    .contact-box,
+    .project-slide {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .stat {
+      padding: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.6rem;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .profile-card {
+      padding: 22px;
+    }
+
+    .profile-photo {
+      aspect-ratio: 4 / 5;
+      border-radius: 28px;
+      background:
+        linear-gradient(rgba(6,10,20,0.3), rgba(6,10,20,0.7)),
+        url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80') center/cover;
+      border: 1px solid var(--line);
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      margin-bottom: 20px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      margin: 8px 0 0;
+      max-width: 760px;
+    }
+
+    .section-title h3 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      letter-spacing: -0.03em;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 22px;
+    }
+
+    .card h4 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .logo-row {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .logo-box {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      text-align: center;
+      color: #dce5ff;
+      background: rgba(255,255,255,0.03);
+      font-weight: 600;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-item {
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 20px;
+    }
+
+    .timeline-meta {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .timeline-item h4 {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+    }
+
+    .timeline-item p { margin: 0; color: var(--muted); }
+
+    .chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--line);
+      color: #dbe2f5;
+      font-size: 0.88rem;
+    }
+
+    .slider-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slider {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 8px;
+      scrollbar-width: none;
+    }
+
+    .slider::-webkit-scrollbar { display: none; }
+
+    .project-slide {
+      min-width: min(100%, 440px);
+      scroll-snap-align: start;
+      padding: 22px;
+    }
+
+    .certificate-slide {
+      min-width: min(100%, 500px);
+    }
+
+    .project-visual {
+      height: 220px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(124,156,255,.35), rgba(71,215,172,.2)),
+        radial-gradient(circle at top, rgba(255,255,255,.2), transparent 35%),
+        #111a30;
+      display: grid;
+      place-items: center;
+      color: #e9efff;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .certificate-image {
+      height: 300px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      border: 1px solid var(--line);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #111a30;
+    }
+
+    .slider-controls {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .icon-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: white;
+      cursor: pointer;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .contact-box {
+      padding: 24px;
+    }
+
+    .contact-box p,
+    .contact-box li {
+      color: var(--muted);
+    }
+
+    footer {
+      padding-top: 28px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 1100px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar {
+        position: sticky;
+        top: 0;
+        height: auto;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 18px 20px;
+      }
+      .sidebar-footer { display: none; }
+      .nav {
+        flex-direction: row;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+      main { padding: 20px 20px 80px; }
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .contact-grid,
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+      .card-grid { grid-template-columns: 1fr; }
+      .logo-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-badge">XV</div>
+        <div>
+          <h1>Xavier Veloso</h1>
+          <p>Data Analyst • Portfolio</p>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <p>Available for analyst, BI, and research roles.</p>
+        <a class="btn" href="#contact">Let’s Work</a>
+      </div>
+    </aside>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">Portfolio style inspired by a clean one-page executive site</div>
+            <h2>Hey, I’m Xavier.<br>I turn data into decisions.</h2>
+            <p class="lead">
+              I build dashboards, uncover patterns, and turn messy business data into clear insights.
+              My work focuses on analytics, reporting, database management, and research-driven problem solving.
+            </p>
+            <div class="hero-actions">
+              <a href="#projects" class="btn">View Projects</a>
+              <a href="#contact" class="btn ghost">Contact Me</a>
+            </div>
+
+            <div class="stats">
+              <div class="stat"><strong>SQL</strong><span>Data cleaning, joins, automation, QA</span></div>
+              <div class="stat"><strong>BI</strong><span>Dashboards, reporting, storytelling</span></div>
+              <div class="stat"><strong>Research</strong><span>Analysis for real estate and business use</span></div>
+            </div>
+          </div>
+
+          <div class="profile-card">
+            <div class="profile-photo"></div>
+            <h3 style="margin:0 0 6px;">Data Analyst & Research Professional</h3>
+            <p style="margin:0;color:var(--muted);">
+              Replace this photo and text with your own image, title, and short professional summary.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="section-title">
+          <h3>About Me</h3>
+          <p>
+            This layout recreates the feel of the reference site: a fixed navigation, bold full-screen intro,
+            clean section flow, experience highlights, branded project panels, and a strong contact section.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <h4>Data Analytics</h4>
+            <p>Exploring datasets, finding trends, validating data quality, and building actionable reporting.</p>
+          </article>
+          <article class="card">
+            <h4>Database Management</h4>
+            <p>Working with structured data, SQL workflows, automation, and reliable data pipelines.</p>
+          </article>
+          <article class="card">
+            <h4>Business Research</h4>
+            <p>Supporting decisions through market research, operational analysis, and domain-specific insights.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="section-title">
+          <h3>Experience Highlights</h3>
+          <p>Use this area to tell your story in sections, similar to the experience blocks on the reference site.</p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-meta">2025 – Present<br>Remote</div>
+            <div>
+              <h4>Real Estate Research & Analysis</h4>
+              <p>
+                Tracking market activity, organizing verified sales data, and supporting decision-making with structured research outputs.
+              </p>
+              <div class="chips">
+                <span class="chip">Research</span>
+                <span class="chip">Data Entry QA</span>
+                <span class="chip">Real Estate</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-meta">Portfolio Work<br>Projects</div>
+            <div>
+              <h4>SQL & Dashboard Projects</h4>
+              <p>
+                Built portfolio-ready analyses involving cleaning, exploratory analysis, database workflows, and stakeholder-friendly outputs.
+              </p>
+              <div class="chips">
+                <span class="chip">MySQL</span>
+                <span class="chip">Power BI</span>
+                <span class="chip">Excel</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-meta">Ongoing<br>Independent</div>
+            <div>
+              <h4>Creative + Technical Projects</h4>
+              <p>
+                Combining analytical thinking with design and presentation skills to create polished, high-impact work.
+              </p>
+              <div class="chips">
+                <span class="chip">Presentation Design</span>
+                <span class="chip">Reporting</span>
+                <span class="chip">Problem Solving</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="section-title">
+          <h3>Featured Projects</h3>
+          <p>
+            The original site uses large visual content blocks and sliders. This version includes a clean horizontal project carousel.
+          </p>
+        </div>
+
+        <div class="slider-wrap">
+          <div class="slider" id="projectSlider">
+            <article class="project-slide">
+              <div class="project-visual">US Household Income Analysis</div>
+              <h4>Income distribution analysis</h4>
+              <p style="color:var(--muted);margin:8px 0 0;">
+                A data project exploring income patterns, geographic trends, and anomalies using SQL workflows.
+              </p>
+            </article>
+
+            <article class="project-slide">
+              <div class="project-visual">CRM Contacts Analysis</div>
+              <h4>Lead and contact insights</h4>
+              <p style="color:var(--muted);margin:8px 0 0;">
+                Segmentation, contact quality checks, and operational reporting ideas for sales and marketing datasets.
+              </p>
+            </article>
+
+            <article class="project-slide">
+              <div class="project-visual">Portfolio Dashboard</div>
+              <h4>Business-ready reporting</h4>
+              <p style="color:var(--muted);margin:8px 0 0;">
+                Dashboard concepts focused on readability, stakeholder needs, and cleaner decision support.
+              </p>
+            </article>
+          </div>
+
+          <div class="slider-controls">
+            <button class="icon-btn" id="prevBtn">←</button>
+            <button class="icon-btn" id="nextBtn">→</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="section-title">
+          <h3>Tools & Skills</h3>
+          <p>Swap these with your actual stack, certifications, and platforms.</p>
+        </div>
+
+        <div class="logo-row">
+          <div class="logo-box">SQL</div>
+          <div class="logo-box">Excel</div>
+          <div class="logo-box">Power BI</div>
+          <div class="logo-box">Tableau</div>
+          <div class="logo-box">Python</div>
+        </div>
+      </section>
+
+      <section id="certificates">
+        <div class="section-title">
+          <h3>Certificates</h3>
+          <p>
+            This section works like the featured projects carousel, but each item is designed to display a certificate image.
+            Replace the placeholder images below with your real certificates.
+          </p>
+        </div>
+
+        <div class="slider-wrap">
+          <div class="slider" id="certificateSlider">
+            <article class="project-slide certificate-slide">
+              <div class="certificate-image" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80');"></div>
+              <h4>Google Data Analytics Certificate</h4>
+              <p style="color:var(--muted);margin:8px 0 0;">Replace this with your actual certificate image and title.</p>
+            </article>
+
+            <article class="project-slide certificate-slide">
+              <div class="certificate-image" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80');"></div>
+              <h4>SQL for Data Analysis</h4>
+              <p style="color:var(--muted);margin:8px 0 0;">Add the certificate source, issuer, or date here.</p>
+            </article>
+
+            <article class="project-slide certificate-slide">
+              <div class="certificate-image" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80');"></div>
+              <h4>Business Intelligence Fundamentals</h4>
+              <p style="color:var(--muted);margin:8px 0 0;">Duplicate these cards if you want to add more certificates.</p>
+            </article>
+          </div>
+
+          <div class="slider-controls">
+            <button class="icon-btn" id="certPrevBtn">←</button>
+            <button class="icon-btn" id="certNextBtn">→</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="section-title">
+          <h3>Contact</h3>
+          <p>End with a strong call to action just like the reference site.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-box">
+            <h4 style="margin-top:0;">Let’s connect</h4>
+            <p>
+              I’m open to opportunities in data analytics, research, reporting, and business intelligence.
+            </p>
+            <ul>
+              <li>Email: yourname@email.com</li>
+              <li>LinkedIn: linkedin.com/in/yourprofile</li>
+              <li>GitHub: github.com/yourprofile</li>
+            </ul>
+          </div>
+
+          <div class="contact-box">
+            <h4 style="margin-top:0;">Quick message form</h4>
+            <form onsubmit="event.preventDefault(); alert('Connect this form to Formspree, Netlify Forms, or EmailJS.');">
+              <div style="display:grid;gap:12px;">
+                <input type="text" placeholder="Xavier Veloso" style="padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:white;">
+                <input type="email" placeholder="xavierveloso.pro@gmail.com" style="padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:white;">
+                <textarea placeholder="Your message" rows="5" style="padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:white;resize:vertical;"></textarea>
+                <button class="btn" type="submit">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        © 2026 Xavier Veloso. Built as a one-page portfolio template.
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const navLinks = document.querySelectorAll('.nav a');
+    const sections = document.querySelectorAll('main section');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => link.classList.remove('active'));
+          const active = document.querySelector(`.nav a[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { threshold: 0.45 });
+
+    sections.forEach(section => observer.observe(section));
+
+    const slider = document.getElementById('projectSlider');
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      slider.scrollBy({ left: -460, behavior: 'smooth' });
+    });
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      slider.scrollBy({ left: 460, behavior: 'smooth' });
+    });
+
+    const certificateSlider = document.getElementById('certificateSlider');
+    document.getElementById('certPrevBtn').addEventListener('click', () => {
+      certificateSlider.scrollBy({ left: -520, behavior: 'smooth' });
+    });
+    document.getElementById('certNextBtn').addEventListener('click', () => {
+      certificateSlider.scrollBy({ left: 520, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
