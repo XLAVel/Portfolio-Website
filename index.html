@@ -371,23 +371,18 @@
 
     .project-visual {
       height: 220px;
-      border-radius: 20px;
+      border-radius: 10px;
       margin-bottom: 16px;
       border: 1px solid var(--line);
-      background:
-        linear-gradient(135deg, rgba(124,156,255,.35), rgba(71,215,172,.2)),
-        radial-gradient(circle at top, rgba(255,255,255,.2), transparent 35%),
-        #111a30;
-      display: grid;
-      place-items: center;
-      color: #e9efff;
-      font-weight: 700;
-      font-size: 1.2rem;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #111a30;
     }
 
     .certificate-image {
       height: 350px;
-      border-radius: 20px;
+      border-radius: 10px;
       margin-bottom: 16px;
       border: 1px solid var(--line);
       background-size: cover;
@@ -535,7 +530,6 @@
             I specialize in transforming raw data into polished dashboards and meaningful analytics that support organizational goals and drive better outcomes.
           </p>
         </div>
-
         <div class="card-grid">
           <article class="card">
             <h4>📊 Data Analytics</h4>
@@ -626,7 +620,9 @@
           </article>
         </div>
       </section>
-
+<div id="imageModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center;">
+  <img id="modalImg" style="max-width:90%; max-height:90%; border-radius:12px;">
+</div>
       <section id="projects">
         <div class="section-title">
           <h3>Featured Projects</h3>
@@ -635,11 +631,12 @@
         <div class="slider-wrap">
           <div class="slider" id="projectSlider">
             <article class="project-slide">
-              <div class="project-visual">US Household Income Analysis</div>
+              <div class="project-visual" style="background-image: url('https://raw.githubusercontent.com/XLAVel/MySQL-Project-US-Household-Income-Exploratory-Data-Analysis/refs/heads/main/us_household_income_analysis_picture.png');"></div>
               <h4>Income distribution analysis</h4>
               <p style="color:var(--muted);margin:8px 0 0;">
                 Explores the US Household Income dataset using MySQL to perform data cleaning, transformation, exploratory data analysis (EDA), and automation. 
-                The goal is to uncover meaningful insights about income distribution across the United States, including geographic trends and potential anomalies within the data.
+                The goal is to uncover meaningful insights about income distribution across the United States, including geographic trends and potential anomalies within the data.<br>
+                <a href="https://github.com/XLAVel/MySQL-Project-US-Household-Income-Exploratory-Data-Analysis"><u>GitHub Link</u></a>
               </p>
               <div class="chips">
                 <span class="chip">MySQL</span>
@@ -647,10 +644,11 @@
             </article>
 
             <article class="project-slide">
-              <div class="project-visual">Wallmart Promotions Dashboard</div>
-              <h4>Promotion and Sales insights</h4>
+              <div class="project-visual"style="background-image: url('https://raw.githubusercontent.com/XLAVel/HR-Analytics-Dashboard/refs/heads/main/HR_Data.jpg');"></div>
+              <h4>HR Analytics Dashboard</h4>
               <p style="color:var(--muted);margin:8px 0 0;">
-                Dashboard concepts focused on readability, stakeholder needs, and cleaner decision support.
+                Developed an interactive HR Analytics Dashboard in Power BI to analyze employee attrition trends and support data-driven decision-making.<br>
+                <a href="https://github.com/XLAVel/HR-Analytics-Dashboard"><u>GitHub Link</u></a>
               </p>
               <div class="chips">
               <span class="chip">Power BI</span>
@@ -658,7 +656,7 @@
             </article>
 
             <article class="project-slide">
-              <div class="project-visual">Portfolio Dashboard</div>
+              <div class="project-visual"style="background-image: url('');"></div>
               <h4>Business-ready reporting</h4>
               <p style="color:var(--muted);margin:8px 0 0;">
                 Dashboard concepts focused on readability, stakeholder needs, and cleaner decision support.
@@ -694,11 +692,6 @@
         </div>
       </section>
 
-<div id="imageModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center;">
-  <img id="modalImg" style="max-width:90%; max-height:90%; border-radius:12px;">
-</div>
-
-
       <section id="certificates">
         <div class="section-title">
           <h3>Certificates</h3>
@@ -709,43 +702,43 @@
             <article class="project-slide certificate-slide">
               <div class="certificate-image" style="background-image: url('https://raw.githubusercontent.com/XLAVel/Portfolio-Website/refs/heads/main/certs/Xavier%20Lancelot%20Veloso%20-%20Advanced%20MySQL%20for%20Data%20Analysis%20Certificate.jpg');"></div>
               <h4>Advanced MySQL for Data Analysis</h4>
-              <p style="color:var(--muted);margin:8px 0 0;">Analyst Builder | Issued April 2024 | <a href="https://www.analystbuilder.com/achievements/verify/V1M61U3V7L?r=qP6Q6i6pcYOApMFq0aEh3AtIy">Show Credentials</a></p>
+              <p style="color:var(--muted);margin:8px 0 0;">Analyst Builder | Issued April 2024 | <a href="https://www.analystbuilder.com/achievements/verify/V1M61U3V7L?r=qP6Q6i6pcYOApMFq0aEh3AtIy"><u>Show Credentials</u></a></p>
             </article>
 
             <article class="project-slide certificate-slide">
               <div class="certificate-image" style="background-image: url('https://raw.githubusercontent.com/XLAVel/Portfolio-Website/refs/heads/main/certs/Xavier%20Lancelot%20Veloso%20-%20Microsoft%20Power%20BI%20Desktop%20for%20Business%20Intelligence%20Certificate.jpg');"></div>
               <h4>Microsoft Power BI Desktop for Business Intelligence</h4>
-              <p style="color:var(--muted);margin:8px 0 0;">Analyst Builder | Issued March 2026 | <a href="https://www.analystbuilder.com/achievements/verify/YTIHVXCLLW?r=MAaBCFAWlgzQa5MQLNKjQQELL">Show Credentials</a></p>
+              <p style="color:var(--muted);margin:8px 0 0;">Analyst Builder | Issued March 2026 | <a href="https://www.analystbuilder.com/achievements/verify/YTIHVXCLLW?r=MAaBCFAWlgzQa5MQLNKjQQELL"><u>Show Credentials</u></a></p>
             </article>
 
             <article class="project-slide certificate-slide">
               <div class="certificate-image" style="background-image: url('https://raw.githubusercontent.com/XLAVel/Portfolio-Website/refs/heads/main/certs/v2n2mldc_1770147317878_page-0001.jpg');"></div>
               <h4>Excel Formulas & Functions</h4>
-              <p style="color:var(--muted);margin:8px 0 0;">Maven Analytics | Issued Oct 2023 | <a href="https://certificates.mavenanalytics.io/ee761b1e-e03a-4032-aed5-972de6455e95">Show Credentials</a></p>
+              <p style="color:var(--muted);margin:8px 0 0;">Maven Analytics | Issued Oct 2023 | <a href="https://certificates.mavenanalytics.io/ee761b1e-e03a-4032-aed5-972de6455e95"><u>Show Credentials</u></a></p>
             </article>
 
             <article class="project-slide certificate-slide">
               <div class="certificate-image" style="background-image: url('https://raw.githubusercontent.com/XLAVel/Portfolio-Website/refs/heads/main/certs/Xavier%20Lancelot%20Veloso%20-%20MySQL%20for%20Data%20Analytics%20Certificate.jpg');"></div>
               <h4>MySQL for Data Analysis</h4>
-              <p style="color:var(--muted);margin:8px 0 0;">Analyst Builder | Issued Feb 2024 | <a href="https://www.analystbuilder.com/achievements/verify/MTODR4E43Q">Show Credentials</a></p>
+              <p style="color:var(--muted);margin:8px 0 0;">Analyst Builder | Issued Feb 2024 | <a href="https://www.analystbuilder.com/achievements/verify/MTODR4E43Q"><u>Show Credentials</u></a></p>
             </article>
 
             <article class="project-slide certificate-slide">
               <div class="certificate-image" style="background-image: url('https://raw.githubusercontent.com/XLAVel/Portfolio-Website/refs/heads/main/certs/Coursera%20B9TTEX8R9MFD_page-0001.jpg');"></div>
               <h4>Google Data Analytics Certificate</h4>
-              <p style="color:var(--muted);margin:8px 0 0;">Google | Issued Oct 2023 | <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/B9TTEX8R9MFD">Show Credentials</a></p>
+              <p style="color:var(--muted);margin:8px 0 0;">Google | Issued Oct 2023 | <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/B9TTEX8R9MFD"><u>Show Credentials</u></a></p>
             </article>
 
             <article class="project-slide certificate-slide">
               <div class="certificate-image" style="background-image: url('https://raw.githubusercontent.com/XLAVel/Portfolio-Website/refs/heads/main/certs/Xavier%20Lancelot%20Veloso%20-%20AI%20for%20Data%20Professionals%20Certificate.jpg');"></div>
               <h4>AI for Data Professionals</h4>
-              <p style="color:var(--muted);margin:8px 0 0;">Analyst Builder | Issued March 2026 | <a href="https://www.analystbuilder.com/achievements/verify/5DRDEI1MZX?r=HGSp24fPxT6SWQ5MqWWeScEqH">Show Credentials</a></p>
+              <p style="color:var(--muted);margin:8px 0 0;">Analyst Builder | Issued March 2026 | <a href="https://www.analystbuilder.com/achievements/verify/5DRDEI1MZX?r=HGSp24fPxT6SWQ5MqWWeScEqH"><u>Show Credentials</u></a></p>
             </article>
 
             <article class="project-slide certificate-slide">
               <div class="certificate-image" style="background-image: url('https://raw.githubusercontent.com/XLAVel/Portfolio-Website/refs/heads/main/certs/ayx8r10k_1745928734762_page-0001.jpg');"></div>
               <h4>Data Literacy Foundations</h4>
-              <p style="color:var(--muted);margin:8px 0 0;">Maven Analytics | Issued March 2024 | <a href="https://certificates.mavenanalytics.io/52ca7ec3-da4c-4059-a49e-a7cc5b17678b">Show Credentials</a></p>
+              <p style="color:var(--muted);margin:8px 0 0;">Maven Analytics | Issued March 2024 | <a href="https://certificates.mavenanalytics.io/52ca7ec3-da4c-4059-a49e-a7cc5b17678b"><u>Show Credentials</u></a></p>
             </article>
           </div>
 
@@ -833,20 +826,43 @@
       certificateSlider.scrollBy({ left: 520, behavior: 'smooth' });
     });
 
-    const modal = document.getElementById('imageModal');
+const modal = document.getElementById('imageModal');
 const modalImg = document.getElementById('modalImg');
 
-// add click to all certificate images
-const certImages = document.querySelectorAll('.certificate-image');
-
-certImages.forEach(img => {
+// CERTIFICATES (already working)
+document.querySelectorAll('.certificate-image').forEach(img => {
   img.addEventListener('click', () => {
     const bg = img.style.backgroundImage;
-    const url = bg.slice(5, -2); // extract url("...")
+    const url = bg.slice(5, -2);
     modalImg.src = url;
     modal.style.display = 'flex';
   });
 });
+
+// PROJECTS (NEW)
+document.querySelectorAll('.project-visual').forEach(project => {
+  project.addEventListener('click', () => {
+    // OPTION 1: if using background images
+    const bg = project.style.backgroundImage;
+
+    if (bg && bg !== 'none') {
+      const url = bg.slice(5, -2);
+      modalImg.src = url;
+    } else {
+      // OPTION 2: fallback (solid design → show placeholder or ignore)
+      modalImg.src = 'https://via.placeholder.com/1200x700?text=Project+Preview';
+    }
+
+    modal.style.display = 'flex';
+  });
+});
+
+// CLOSE MODAL
+modal.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
+
 
 // close modal on click
 modal.addEventListener('click', () => {
