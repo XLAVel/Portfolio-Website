@@ -297,11 +297,23 @@
       padding: 18px;
       border: 1px solid var(--line);
       border-radius: 18px;
-      text-align: center;
-      color: #dce5ff;
       background: rgba(255,255,255,0.03);
-      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+
+    .logo-box img {
+      max-width: 60px;
+      max-height: 60px;
+      object-fit: contain;
+      filter: brightness(1.1);
+    }
+
+    .logo-box:hover {
+      transform: translateY(-4px);
+      transition: 0.2s;
+}
 
     .timeline {
       display: grid;
@@ -579,6 +591,7 @@
                 <span class="chip">County Records</span>
                 <span class="chip">GIS</span>
                 <span class="chip">Land.id</span>
+                <span class="chip">onX Map</span>
                 <span class="chip">CRM Database</span>
               </div>
             </div>
@@ -612,7 +625,7 @@
                 Built portfolio-ready analyses involving cleaning, exploratory analysis, database workflows, and stakeholder-friendly outputs.
               </p>
               <div class="chips">
-                <span class="chip">MySQL</span>
+                <span class="chip">SQL</span>
                 <span class="chip">Power BI</span>
                 <span class="chip">Excel</span>
               </div>
@@ -639,7 +652,7 @@
                 <a href="https://github.com/XLAVel/MySQL-Project-US-Household-Income-Exploratory-Data-Analysis"><u>GitHub Link</u></a>
               </p>
               <div class="chips">
-                <span class="chip">MySQL</span>
+                <span class="chip">SQL</span>
               </div>
             </article>
 
@@ -678,18 +691,21 @@
         </div>
 
         <div class="logo-row">
-          <div class="logo-box">SQL</div>
+          <div class="logo-row">
+  <div class="logo-box">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL">
+  </div>
           <div class="logo-box">Power BI</div>
           <div class="logo-box">Tableau</div>
           <div class="logo-box">Excel</div>
+          <div class="logo-box">Python</div>
+          <div class="logo-box">Research</div>
           <div class="logo-box">Airtable</div>
           <div class="logo-box">Google Sheets</div>
           <div class="logo-box">Git & GitHub</div>
-          <div class="logo-box">CRM Softwares</div>
+          <div class="logo-box">CRM Database</div>
           <div class="logo-box">MLS</div>
           <div class="logo-box">GIS</div>
-          <div class="logo-box">Research</div>
-
         </div>
       </section>
 
@@ -794,6 +810,10 @@
       </section>
     </main>
   </div>
+
+<div id="imageModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center;">
+  <img id="modalImg" style="max-width:90%; max-height:90%; border-radius:12px;">
+</div>
 
   <script>
     const navLinks = document.querySelectorAll('.nav a');
